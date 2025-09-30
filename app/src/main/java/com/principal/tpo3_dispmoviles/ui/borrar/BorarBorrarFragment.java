@@ -23,7 +23,7 @@ public class BorarBorrarFragment extends Fragment {
 
     private BorarBorrarViewModel mViewModel;
     private FragmentBorarBorrarBinding binding;
-    Producto producto = null;
+    private Producto producto = null;
     public static BorarBorrarFragment newInstance() {
         return new BorarBorrarFragment();
     }
@@ -32,13 +32,14 @@ public class BorarBorrarFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentBorarBorrarBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
         if (getArguments() != null) {
-            Producto producto = (Producto) getArguments().getSerializable("producto");
+             producto = (Producto) getArguments().getSerializable("producto");
 
             if (producto != null) {
-                binding.tvDescripcion.setText(producto.getDescripcion());
-                binding.tvCodigo.setText(producto.getCodigo());
-                binding.tvPrecio.setText(producto.getPrecio()+"");
+                binding.tvDescripcion.setText("Descripcion ."+producto.getDescripcion());
+                binding.tvCodigo.setText("Codigo :"+producto.getCodigo());
+                binding.tvPrecio.setText("Precio :"+producto.getPrecio()+"");
 
             }
         }
@@ -56,7 +57,7 @@ public class BorarBorrarFragment extends Fragment {
 
 
 
-        return inflater.inflate(R.layout.fragment_borar_borrar, container, false);
+        return root;
     }
 
     @Override

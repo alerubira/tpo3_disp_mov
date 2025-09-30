@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.viewbinding.ViewBinding;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,16 +34,20 @@ public class BorrarFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentBorrarBinding.inflate(inflater, container, false);
-
+        View root = binding.getRoot();
         mViewModel = new ViewModelProvider(this).get(BorrarViewModel.class);
         mViewModel.getMInforme().observe(this,String ->{
+            Log.d("salida",String);
                binding.tvAviso.setText(String);
         });
         mViewModel.getMProducto().observe(this,Producto ->{
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("producto", Producto);
-            NavHostFragment.findNavController(this)
-                    .navigate(R.id.borarBorrarFragment, bundle);
+            if (Producto != null) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("producto", Producto);
+                NavHostFragment.findNavController(this)
+                        .navigate(R.id.borarBorrarFragment, bundle);
+                mViewModel.resetear();
+            }
         });
         binding.btnBorrar.setOnClickListener(new View.OnClickListener(){
 
@@ -51,7 +56,7 @@ public class BorrarFragment extends Fragment {
                 mViewModel.buscarProducto(binding.edtBorrar.getText().toString());
             }
         });
-        return inflater.inflate(R.layout.fragment_borrar, container, false);
+        return root;
     }
 
 

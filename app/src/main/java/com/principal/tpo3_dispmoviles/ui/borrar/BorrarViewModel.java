@@ -1,5 +1,7 @@
 package com.principal.tpo3_dispmoviles.ui.borrar;
 
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -27,6 +29,7 @@ public class BorrarViewModel extends ViewModel {
         return mProducto;
     }
     public void buscarProducto(String codigo) {
+
         if (codigo == null || codigo.trim().isEmpty()) {
             mText.setValue("Los datos ingresados son incorrectos o no están");
             return;
@@ -41,5 +44,8 @@ public class BorrarViewModel extends ViewModel {
 
 
         mText.setValue("El producto con código " + codigo + " no existe");
+    }
+    public void resetear() {
+        mProducto.postValue(null);
     }
 }

@@ -1,6 +1,8 @@
 package com.principal.tpo3_dispmoviles.clases;
 
-public class Producto {
+import java.io.Serializable;
+
+public class Producto implements Serializable {
     private String codigo;
     private String descripcion;
     private double precio;

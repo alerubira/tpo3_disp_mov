@@ -22,4 +22,22 @@
         android:name="com.principal.tpo3_dispmoviles.ui.slideshow.SlideshowFragment"
         android:label="@string/salir"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/borrarFragment"
+        android:name="com.principal.tpo3_dispmoviles.ui.borrar.BorrarFragment"
+        android:label="fragment_borrar"
+        tools:layout="@layout/fragment_borrar" >
+        <action
+            android:id="@+id/action_borrarFragment_to_borarBorrarFragment"
+            app:destination="@id/borarBorrarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/borarBorrarFragment"
+        android:name="com.principal.tpo3_dispmoviles.ui.borrar.BorarBorrarFragment"
+        android:label="fragment_borar_borrar"
+        tools:layout="@layout/fragment_borar_borrar" >
+        <action
+            android:id="@+id/action_borarBorrarFragment_to_borrarFragment"
+            app:destination="@id/borrarFragment" />
+    </fragment>
 </navigation>

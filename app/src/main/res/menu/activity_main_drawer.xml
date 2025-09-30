@@ -13,6 +13,10 @@
             android:icon="@drawable/iconolist"
             android:title="@string/ver" />
         <item
+            android:id="@+id/borrarFragment"
+            android:icon="@drawable/iconofin"
+            android:title="Borrar" />
+        <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/iconofin"
             android:title="@string/salir" />
